@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>No.1 Beef Shop — Premium Halal Meat</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #6B4FA0;
+    --purple-light: #C4B0E8;
+    --purple-pale: #EDE8F8;
+    --cyan: #0ABFBC;
+    --cyan-dark: #0891B2;
+    --cyan-pale: #E0F7F7;
+    --red: #D72638;
+    --red-dark: #B01E2C;
+    --white: #FFFFFF;
+    --off-white: #FAF9FF;
+    --dark: #1A1225;
+    --gray: #6B7280;
+    --gray-light: #F3F0FF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 6%;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(107,79,160,0.1);
+    transition: all 0.3s ease;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-logo {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--red), var(--red-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700; font-size: 18px; color: #fff;
+    letter-spacing: 1px;
+  }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 22px; color: var(--dark); }
+  .nav-name span { color: var(--red); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--gray); font-size: 14px; font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-cta {
+    background: var(--red); color: #fff; border: none; cursor: pointer;
+    padding: 11px 24px; border-radius: 10px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.3px; text-decoration: none; transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(215,38,56,0.3); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2D1B69 0%, #6B4FA0 35%, #0ABFBC 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 120px 6% 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -40%; right: -15%; width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(10,191,188,0.25) 0%, transparent 65%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -20%; left: -10%; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(215,38,56,0.15) 0%, transparent 65%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 600px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px); border-radius: 50px;
+    padding: 8px 18px; margin-bottom: 32px;
+    font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 1.5px; text-transform: uppercase;
+    animation: fadeDown 0.8s ease both;
+  }
+  .hero-badge::before { content: '●'; color: #4ADE80; font-size: 8px; }
+  .hero h1 {
+    font-size: clamp(48px, 7vw, 84px);
+    font-weight: 700; line-height: 1.05;
+    color: #fff; margin-bottom: 8px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero h1 .accent { color: #FF6B6B; display: block; }
+  .hero p {
+    font-size: 17px; line-height: 1.75; color: rgba(255,255,255,0.75);
+    margin-bottom: 44px; max-width: 460px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.8s 0.3s ease both; }
+  .btn-primary {
+    background: var(--red); color: #fff; text-decoration: none;
+    padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 15px;
+    letter-spacing: 0.3px; transition: all 0.2s;
+    box-shadow: 0 8px 30px rgba(215,38,56,0.4);
+  }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(215,38,56,0.5); }
+  .btn-outline {
+    background: rgba(255,255,255,0.1); color: #fff; text-decoration: none;
+    padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 15px;
+    border: 1.5px solid rgba(255,255,255,0.35); transition: all 0.2s;
+    backdrop-filter: blur(8px);
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+  .hero-visual {
+    position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+    width: clamp(300px, 42%, 580px); z-index: 2;
+    animation: floatIn 1s 0.3s ease both;
+  }
+  .hero-plate {
+    position: relative;
+  }
+  .hero-plate-bg {
+    width: 100%; aspect-ratio: 1;
+    background: radial-gradient(ellipse at 40% 40%, rgba(255,255,255,0.18), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%; backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+    animation: spinSlow 20s linear infinite;
+  }
+  .hero-meat-img {
+    width: 82%; height: 82%; object-fit: cover; border-radius: 50%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .hero-float-badge {
+    position: absolute;
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+    border-radius: 14px; padding: 12px 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    font-size: 12px; font-weight: 600; color: var(--dark);
+    display: flex; align-items: center; gap: 8px;
+    animation: floatBadge 3s ease-in-out infinite alternate;
+  }
+  .hero-float-badge.badge-1 { top: 8%; left: -8%; }
+  .hero-float-badge.badge-2 { bottom: 12%; right: -5%; animation-delay: 1.5s; }
+  .badge-icon { font-size: 20px; }
+
+  /* ─── SECTION SHARED ─── */
+  section { padding: 100px 6%; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--cyan-dark); margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(36px, 4.5vw, 54px); font-weight: 700;
+    color: var(--dark); line-height: 1.15; margin-bottom: 18px;
+  }
+  .section-title .red { color: var(--red); }
+  .section-sub { font-size: 16px; color: var(--gray); line-height: 1.7; max-width: 500px; }
+
+  /* ─── FEATURES ─── */
+  .features { background: var(--white); }
+  .features-header { text-align: center; margin-bottom: 64px; }
+  .features-header .section-sub { margin: 0 auto; }
+  .features-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;
+  }
+  .feature-card {
+    background: var(--gray-light);
+    border: 1px solid rgba(107,79,160,0.08);
+    border-radius: 20px; padding: 36px 28px;
+    transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--cyan));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(107,79,160,0.12); background: var(--white); }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--purple-pale), rgba(196,176,232,0.3));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin-bottom: 20px;
+  }
+  .feature-card h3 { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .feature-card p { font-size: 14px; color: var(--gray); line-height: 1.65; }
+
+  /* ─── PRODUCTS ─── */
+  .products { background: var(--off-white); }
+  .products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 20px; }
+  .category-tabs { display: flex; gap: 8px; background: var(--white); border-radius: 12px; padding: 6px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .tab { padding: 10px 22px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--gray); transition: all 0.2s; }
+  .tab.active { background: var(--red); color: #fff; box-shadow: 0 4px 14px rgba(215,38,56,0.3); }
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+  .product-card {
+    background: var(--white); border-radius: 20px; overflow: hidden;
+    border: 1px solid rgba(107,79,160,0.08);
+    transition: all 0.3s ease; cursor: pointer;
+  }
+  .product-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(107,79,160,0.12); }
+  .product-img-wrap {
+    height: 180px; overflow: hidden; position: relative;
+    background: linear-gradient(135deg, #f8f4ff, #e8f7f7);
+  }
+  .product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .product-card:hover .product-img-wrap img { transform: scale(1.07); }
+  .product-tag {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--white); color: var(--purple); font-size: 10px; font-weight: 700;
+    padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .product-info { padding: 20px; }
+  .product-name { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+  .product-desc { font-size: 12px; color: var(--gray); margin-bottom: 14px; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--red); }
+  .product-price span { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--gray); font-weight: 400; }
+  .product-order {
+    background: var(--red); color: #fff; border: none; cursor: pointer;
+    width: 34px; height: 34px; border-radius: 10px; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .product-order:hover { background: var(--red-dark); transform: scale(1.1); }
+
+  /* ─── READY TO COOK ─── */
+  .rtc {
+    background: linear-gradient(135deg, #1A1225 0%, #2D1B69 50%, #0D4A5C 100%);
+    position: relative; overflow: hidden;
+  }
+  .rtc::before {
+    content: ''; position: absolute; top: -30%; right: -10%;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(10,191,188,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .rtc-header { text-align: center; margin-bottom: 64px; }
+  .rtc-header .section-label { color: var(--cyan); }
+  .rtc-header .section-title { color: var(--white); }
+  .rtc-header .section-title .red { color: #FF6B6B; }
+  .rtc-header .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto; }
+  .rtc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .rtc-card {
+    border-radius: 24px; overflow: hidden; position: relative;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.35s ease;
+  }
+  .rtc-card:hover { transform: translateY(-8px); box-shadow: 0 32px 72px rgba(0,0,0,0.4); border-color: rgba(10,191,188,0.3); }
+  .rtc-img-wrap { height: 220px; overflow: hidden; position: relative; }
+  .rtc-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .rtc-card:hover .rtc-img-wrap img { transform: scale(1.08); }
+  .rtc-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(26,18,37,0.9), transparent); }
+  .rtc-badge {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--red); color: #fff; font-size: 10px; font-weight: 700;
+    padding: 5px 12px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .rtc-body { padding: 24px; }
+  .rtc-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .rtc-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 18px; }
+  .rtc-footer { display: flex; align-items: center; justify-content: space-between; }
+  .rtc-price { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: var(--cyan); }
+  .rtc-price span { font-family: 'DM Sans', sans-serif; font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 400; }
+  .rtc-order {
+    background: rgba(10,191,188,0.15); border: 1.5px solid var(--cyan);
+    color: var(--cyan); border-radius: 10px; padding: 8px 18px;
+    font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }
+  .rtc-order:hover { background: var(--cyan); color: var(--dark); }
+
+  /* ─── CTA ─── */
+  .cta {
+    background: var(--white);
+    text-align: center; padding: 100px 6%;
+  }
+  .cta-inner {
+    max-width: 640px; margin: 0 auto;
+    background: linear-gradient(135deg, #F8F4FF, #E0F7F7);
+    border: 1px solid rgba(107,79,160,0.12);
+    border-radius: 32px; padding: 72px 60px;
+    position: relative; overflow: hidden;
+  }
+  .cta-inner::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(10,191,188,0.15), transparent);
+    pointer-events: none;
+  }
+  .cta-inner .section-label { color: var(--cyan-dark); }
+  .cta-inner .section-title { color: var(--dark); margin-bottom: 16px; }
+  .cta-inner .section-title .red { color: var(--red); }
+  .cta-inner p { color: var(--gray); font-size: 15px; line-height: 1.7; margin-bottom: 40px; }
+  .btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: #25D366; color: #fff; text-decoration: none;
+    padding: 18px 40px; border-radius: 14px; font-size: 16px; font-weight: 700;
+    box-shadow: 0 10px 36px rgba(37,211,102,0.4); transition: all 0.2s;
+    margin-bottom: 20px;
+  }
+  .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(37,211,102,0.5); }
+  .btn-whatsapp svg { width: 24px; height: 24px; }
+  .cta-note { font-size: 13px; color: var(--gray); }
+
+  /* ─── ABOUT ─── */
+  .about {
+    background: linear-gradient(135deg, var(--purple-pale), var(--cyan-pale));
+    padding: 100px 6%;
+  }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-left .section-label { color: var(--purple); }
+  .about-left p { color: var(--gray); font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+  .stats-row { display: flex; gap: 40px; margin-top: 44px; }
+  .stat { border-left: 3px solid var(--red); padding-left: 20px; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; color: var(--red); line-height: 1; }
+  .stat-label { font-size: 13px; color: var(--gray); font-weight: 500; margin-top: 4px; }
+  .about-right { position: relative; }
+  .about-img-main {
+    border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(107,79,160,0.2);
+    aspect-ratio: 4/3;
+  }
+  .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
+  .about-img-float {
+    position: absolute; bottom: -24px; left: -32px;
+    width: 48%; border-radius: 18px; overflow: hidden;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.15); border: 4px solid #fff;
+    aspect-ratio: 1;
+  }
+  .about-img-float img { width: 100%; height: 100%; object-fit: cover; }
+  .halal-badge {
+    position: absolute; top: -16px; right: -16px;
+    background: var(--white); border-radius: 50%; padding: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 80px; height: 80px;
+  }
+  .halal-badge .h { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--red); line-height: 1; }
+  .halal-badge .l { font-size: 9px; color: var(--gray); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.65);
+    padding: 72px 6% 40px;
+  }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; margin-bottom: 56px; }
+  .footer-brand .nav-name { color: #fff; margin-bottom: 12px; font-size: 24px; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 260px; }
+  .footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--cyan); }
+  .footer-col ul li span { font-size: 14px; }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.3); }
+  .footer-social { display: flex; gap: 12px; }
+  .social-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.5); text-decoration: none; font-size: 15px;
+    transition: all 0.2s;
+  }
+  .social-icon:hover { background: var(--cyan); border-color: var(--cyan); color: var(--dark); transform: translateY(-2px); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes floatIn { from { opacity: 0; transform: translateY(-40%) scale(0.9); } to { opacity: 1; transform: translateY(-50%) scale(1); } }
+  @keyframes floatBadge { from { transform: translateY(0px); } to { transform: translateY(-10px); } }
+  @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-visual { display: none; }
+    .rtc-grid { grid-template-columns: 1fr 1fr; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-right { display: none; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 16px 5%; }
+    .nav-links { display: none; }
+    section { padding: 72px 5%; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    .rtc-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    .cta-inner { padding: 48px 32px; }
+    .stats-row { flex-direction: column; gap: 24px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    .products-header { flex-direction: column; align-items: flex-start; }
+    .category-tabs { flex-wrap: wrap; }
+  }
+  @media (max-width: 480px) {
+    .features-grid { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">N1</div>
+    <div class="nav-name"><span>No.1</span> Beef Shop</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#ready-to-cook">Ready to Cook</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/919999999999" class="nav-cta" target="_blank">Order Now →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">Halal Certified · Fresh Daily</div>
+    <h1>Premium Quality<span class="accent">Halal Beef</span></h1>
+    <p>Fresh raw meat items and ready-to-cook specials. Clean cuts, fair pricing, and fast delivery right to your door.</p>
+    <div class="hero-buttons">
+      <a href="#products" class="btn-primary">View Products</a>
+      <a href="https://wa.me/919999999999" class="btn-outline" target="_blank">📲 Order on WhatsApp</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-plate">
+      <div class="hero-float-badge badge-1">
+        <span class="badge-icon">🥩</span>
+        <div><div style="font-size:13px;font-weight:700;color:#1A1225">Fresh Cut</div><div style="font-size:11px;color:#6B7280;font-weight:400">Daily Supply</div></div>
+      </div>
+      <div class="hero-plate-bg">
+        <img class="hero-meat-img" src="https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=600&q=80" alt="Premium Beef" onerror="this.src='https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80'">
+      </div>
+      <div class="hero-float-badge badge-2">
+        <span class="badge-icon">✅</span>
+        <div><div style="font-size:13px;font-weight:700;color:#1A1225">100% Halal</div><div style="font-size:11px;color:#6B7280;font-weight:400">Certified</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="features-header reveal">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">The <span class="red">No.1 Difference</span></h2>
+    <p class="section-sub">We don't just sell meat — we deliver quality, care, and consistency in every cut.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">🔪</div>
+      <h3>Hand Cut Fresh Meat</h3>
+      <p>Every piece is hand-trimmed and cut fresh daily by our expert butchers for maximum quality.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🌿</div>
+      <h3>Farm Fresh Sourcing</h3>
+      <p>Direct from trusted farms to your table. No middlemen, no compromises — just pure freshness.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">👨‍🍳</div>
+      <h3>Expert Butchers</h3>
+      <p>4+ years of precision. Our butchers know exactly how to cut for flavour, texture, and presentation.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🚚</div>
+      <h3>Free Delivery</h3>
+      <p>Order on WhatsApp and get your fresh meat delivered fast, straight to your doorstep.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-header reveal">
+    <div>
+      <div class="section-label">Our Selection</div>
+      <h2 class="section-title">Raw Meat <span class="red">Items</span></h2>
+    </div>
+    <div class="category-tabs">
+      <button class="tab active" onclick="showCategory('fresh')">Fresh Cuts</button>
+      <button class="tab" onclick="showCategory('spare')">Spare Parts</button>
+    </div>
+  </div>
+
+  <div class="products-grid" id="fresh-grid">
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1588347818481-8b6e93f5d0f5?w=400&q=80" alt="Undercut" onerror="this.style.display='none'">
+        <span class="product-tag">Fresh</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Undercut (Tenderloin)</div>
+        <div class="product-desc">The finest, most tender cut. Perfect for steaks.</div>
+        <div class="product-footer">
+          <div class="product-price">₹650 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Undercut Tenderloin')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?w=400&q=80" alt="Minced Meat">
+        <span class="product-tag">Fresh</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Minced Meat (Kheema)</div>
+        <div class="product-desc">Freshly minced daily. Ideal for kebabs & curries.</div>
+        <div class="product-footer">
+          <div class="product-price">₹380 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Minced Meat')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=400&q=80" alt="Belly Meat">
+        <span class="product-tag">Fresh</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Belly Meat</div>
+        <div class="product-desc">Rich marbling, excellent for slow-cooked dishes.</div>
+        <div class="product-footer">
+          <div class="product-price">₹320 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Belly Meat')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&q=80" alt="Ribs">
+        <span class="product-tag">Fresh</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Beef Ribs</div>
+        <div class="product-desc">Meaty, flavourful ribs — great for BBQ & biryani.</div>
+        <div class="product-footer">
+          <div class="product-price">₹420 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Beef Ribs')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1548050405-bada45b6a990?w=400&q=80" alt="Shoulder Cut">
+        <span class="product-tag">Fresh</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Shoulder Cut</div>
+        <div class="product-desc">Robust and hearty. Best for stews and curries.</div>
+        <div class="product-footer">
+          <div class="product-price">₹350 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Shoulder Cut')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1619558866850-cca1d5de3d38?w=400&q=80" alt="Boneless">
+        <span class="product-tag">Popular</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Boneless Beef</div>
+        <div class="product-desc">Clean, trimmed, 100% boneless meat for quick cooking.</div>
+        <div class="product-footer">
+          <div class="product-price">₹480 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Boneless Beef')">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-grid" id="spare-grid" style="display:none">
+    <div class="product-card reveal">
+      <div class="product-img-wrap" style="background:linear-gradient(135deg,#f0e8ff,#ffe8e8)">
+        <img src="https://images.unsplash.com/photo-1624806992066-5ffcf7ca186b?w=400&q=80" alt="Liver">
+        <span class="product-tag">Spare</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Beef Liver</div>
+        <div class="product-desc">Iron-rich, tender liver. A nutritious delicacy.</div>
+        <div class="product-footer">
+          <div class="product-price">₹200 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Beef Liver')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap" style="background:linear-gradient(135deg,#f0e8ff,#ffe8e8)">
+        <img src="https://images.unsplash.com/photo-1630408399977-8f67cbf8cc8a?w=400&q=80" alt="Kidney">
+        <span class="product-tag">Spare</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Kidney</div>
+        <div class="product-desc">Fresh beef kidney, ideal for traditional recipes.</div>
+        <div class="product-footer">
+          <div class="product-price">₹180 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Kidney')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap" style="background:linear-gradient(135deg,#f0e8ff,#ffe8e8)">
+        <img src="https://images.unsplash.com/photo-1555411621-3c72cf98a8b5?w=400&q=80" alt="Brain">
+        <span class="product-tag">Spare</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Brain (Maghaz)</div>
+        <div class="product-desc">Soft, creamy texture — a prized delicacy.</div>
+        <div class="product-footer">
+          <div class="product-price">₹250 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Beef Brain')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap" style="background:linear-gradient(135deg,#f0e8ff,#ffe8e8)">
+        <img src="https://images.unsplash.com/photo-1603356033288-acfcb54801e6?w=400&q=80" alt="Tongue">
+        <span class="product-tag">Spare</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Tongue (Zabanah)</div>
+        <div class="product-desc">Tender, full of flavour. Perfect for slow cooking.</div>
+        <div class="product-footer">
+          <div class="product-price">₹300 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Beef Tongue')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap" style="background:linear-gradient(135deg,#f0e8ff,#ffe8e8)">
+        <img src="https://images.unsplash.com/photo-1629522903424-1fbb68edc01a?w=400&q=80" alt="Tripe">
+        <span class="product-tag">Spare</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Tripe (Omasum)</div>
+        <div class="product-desc">Cleaned and ready. Great for spicy nihari.</div>
+        <div class="product-footer">
+          <div class="product-price">₹150 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Beef Tripe')">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-img-wrap" style="background:linear-gradient(135deg,#f0e8ff,#ffe8e8)">
+        <img src="https://images.unsplash.com/photo-1628087885889-e1e4de4c0e83?w=400&q=80" alt="Bones">
+        <span class="product-tag">Spare</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Marrow Bones</div>
+        <div class="product-desc">Collagen-rich bones for broths and soups.</div>
+        <div class="product-footer">
+          <div class="product-price">₹80 <span>/ kg</span></div>
+          <button class="product-order" onclick="orderWhatsApp('Marrow Bones')">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- READY TO COOK -->
+<section class="rtc" id="ready-to-cook">
+  <div class="rtc-header reveal">
+    <div class="section-label">Ready-to-Cook Specials</div>
+    <h2 class="section-title">Just Fry It, <span class="red">Fun It</span></h2>
+    <p class="section-sub">Pre-marinated, spiced to perfection. From our kitchen to your pan in seconds.</p>
+  </div>
+  <div class="rtc-grid">
+    <div class="rtc-card reveal">
+      <div class="rtc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="BBQ Special">
+        <div class="rtc-overlay"></div>
+        <div class="rtc-badge">🔥 Best Seller</div>
+      </div>
+      <div class="rtc-body">
+        <div class="rtc-name">BBQ Special</div>
+        <div class="rtc-desc">Marinated overnight with smoky spices. Just grill and serve. Juicy, bold flavour every time.</div>
+        <div class="rtc-footer">
+          <div class="rtc-price">₹520 <span>/ kg</span></div>
+          <button class="rtc-order" onclick="orderWhatsApp('BBQ Special')">Order →</button>
+        </div>
+      </div>
+    </div>
+    <div class="rtc-card reveal">
+      <div class="rtc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600&q=80" alt="Meat Balls">
+        <div class="rtc-overlay"></div>
+        <div class="rtc-badge">⭐ New</div>
+      </div>
+      <div class="rtc-body">
+        <div class="rtc-name">Meat Balls</div>
+        <div class="rtc-desc">Handrolled with herbs and spices. Fry, bake or simmer in sauce. Kids love them!</div>
+        <div class="rtc-footer">
+          <div class="rtc-price">₹450 <span>/ kg</span></div>
+          <button class="rtc-order" onclick="orderWhatsApp('Meat Balls')">Order →</button>
+        </div>
+      </div>
+    </div>
+    <div class="rtc-card reveal">
+      <div class="rtc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&q=80" alt="Spicy Kebabs">
+        <div class="rtc-overlay"></div>
+        <div class="rtc-badge">🌶 Spicy</div>
+      </div>
+      <div class="rtc-body">
+        <div class="rtc-name">Spicy Kebabs</div>
+        <div class="rtc-desc">Fiery seekh kebabs loaded with fresh chilli and aromatics. Ready to sizzle.</div>
+        <div class="rtc-footer">
+          <div class="rtc-price">₹480 <span>/ kg</span></div>
+          <button class="rtc-order" onclick="orderWhatsApp('Spicy Kebabs')">Order →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-inner reveal">
+    <div class="section-label">Order Fresh Meat Now</div>
+    <h2 class="section-title">Ready to <span class="red">Order?</span></h2>
+    <p>Send your order directly on WhatsApp for quick confirmation and fast delivery. No app needed — just message us!</p>
+    <a href="https://wa.me/919999999999?text=Hi!%20I'd%20like%20to%20order%20from%20No.1%20Beef%20Shop" class="btn-whatsapp" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+    <div class="cta-note">📍 Mannady, Chennai &nbsp;·&nbsp; Same-day delivery available</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <div class="section-label">Our Story</div>
+      <h2 class="section-title">Rooted in <span class="red">Quality</span> &amp; Trust</h2>
+      <p>No.1 Beef Shop was founded with one purpose — to bring Chennai's finest halal beef straight to your family. We source directly from trusted farms, ensure every animal is Halal-certified, and our butchers prepare every cut with skill and care.</p>
+      <p>We believe fresh meat shouldn't be a luxury. That's why we keep our prices fair, our cuts clean, and our service fast. From a single kilo to bulk orders, we treat every customer like our most important one.</p>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100+</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Halal Certified</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right reveal">
+      <div class="halal-badge"><div class="h">حلال</div><div class="l">Halal</div></div>
+      <div class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=700&q=80" alt="Butcher Shop" onerror="this.src='https://images.unsplash.com/photo-1602591447960-c3cb0f37f7ce?w=700&q=80'">
+      </div>
+      <div class="about-img-float">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="Fresh Cuts">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-name"><span style="color:var(--red)">No.1</span> Beef Shop</div>
+      <p>Premium halal beef delivered fresh daily. Clean cuts, fair prices, and the quality your family deserves.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><span>📍 Mannady, Chennai</span></li>
+        <li><a href="tel:+919999999999">📞 +91 99999 99999</a></li>
+        <li><a href="https://wa.me/919999999999" target="_blank">💬 WhatsApp Us</a></li>
+        <li><a href="https://instagram.com/no1beefshop" target="_blank">📸 @no1beefshop</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#products">Fresh Cuts</a></li>
+        <li><a href="#products">Spare Parts</a></li>
+        <li><a href="#ready-to-cook">Ready to Cook</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <p>© 2025 No.1 Beef Shop, Mannady Chennai. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://wa.me/919999999999" class="social-icon" title="WhatsApp" target="_blank">💬</a>
+      <a href="https://instagram.com/no1beefshop" class="social-icon" title="Instagram" target="_blank">📸</a>
+      <a href="tel:+919999999999" class="social-icon" title="Call">📞</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(r => obs.observe(r));
+
+  // Category tabs
+  function showCategory(cat) {
+    document.getElementById('fresh-grid').style.display = cat === 'fresh' ? 'grid' : 'none';
+    document.getElementById('spare-grid').style.display = cat === 'spare' ? 'grid' : 'none';
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    // Re-trigger reveals
+    document.querySelectorAll('#' + cat + '-grid .reveal').forEach(el => {
+      el.classList.remove('visible');
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+  }
+
+  // WhatsApp order
+  function orderWhatsApp(product) {
+    const msg = encodeURIComponent('Hi! I would like to order: ' + product + ' from No.1 Beef Shop. Please let me know the availability and delivery options.');
+    window.open('https://wa.me/919999999999?text=' + msg, '_blank');
+  }
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.boxShadow = window.scrollY > 40 ? '0 4px 30px rgba(107,79,160,0.1)' : 'none';
+  });
+</script>
+</body>
+</html>
